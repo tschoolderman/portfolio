@@ -1,0 +1,10 @@
+__pycache__/
+
+# Ignore dynaconf secret files
+.secrets.*
+
+# Ignore environments
+.venv
+.env
+.vscode
+.flaskenv

@@ -1,0 +1,121 @@
+body {
+    background: rgba(17, 26, 40, 1);
+    /* background-repeat: no-repeat;
+    background-size: cover; */
+    color: rgb(200, 200, 200);
+    font-size: 18px;
+    font-family: Roboto, sans-serif;
+}
+
+p,
+h5 {
+    color: rgb(200, 200, 200);
+}
+
+h1,
+h2 {
+    color: rgba(0, 207, 93, 1);
+    font-weight: bold;
+}
+
+h4 {
+    color: rgba(0, 207, 93, 1);
+    text-align: right;
+}
+
+.btn:hover,
+.nav-link:hover {
+    color: rgba(0, 207, 93, 1);
+}
+
+input[type=submit] {
+    font-size: 24px;
+    font-style: italic;
+    background-color: crimson;
+    cursor: pointer;
+    padding: 14px 40px;
+    border-radius: 12px;
+}
+
+.accordion-button.show,
+.accordion-button {
+    background-color: rgba(17, 26, 40, 1);
+    color: rgb(200, 200, 200);
+    font-weight: bold;
+}
+
+.accordion {
+    --bs-accordion-active-bg: rgba(17, 26, 40, 1);
+    --bs-primary-text-emphasis: rgba(0, 207, 93, 1);
+}
+
+.accordion-button::after,
+.accordion-button:not(.collapsed)::after {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='rgba(0, 207, 93, 1)'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+}
+
+.accordion-button:hover,
+.accordion-button.collapsed::after {
+    color: rgba(0, 207, 93, 1);
+    background-color: rgba(17, 26, 40, 1);
+    font-weight: bold;
+}
+
+.accordion-body {
+    background-color: rgba(17, 26, 40, 1);
+    color: rgb(200, 200, 200);
+}
+
+#btn-back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: none;
+}
+
+.card {
+    text-align: center;
+    border-color: rgba(0, 207, 93, 1);
+    border-style: double;
+    border-width: 3px;
+}
+
+.navbar-brand {
+    color: rgba(0, 207, 93, 255);
+}
+
+.nav-item {
+    text-align: center;
+}
+
+.row-footer {
+    height: 10vh;
+}
+
+.form-control-dark {
+    border-color: var(--bs-gray);
+}
+
+.form-control-dark:focus {
+    border-color: #fff;
+    box-shadow: 0 0 0 .25rem rgba(255, 255, 255, .25);
+}
+
+/* .parallax { */
+/* background: linear-gradient(rgba(0, 0, 0, 0.5),
+            rgba(0, 0, 0, 0.8)), url('japan_2019.JPG'); */
+/* height: 100%;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; */
+/* } */
+
+.parallax-block {
+    height: 100vh;
+    padding-top: 30%;
+}
+
+#portfolio-card {
+    text-align: left;
+}

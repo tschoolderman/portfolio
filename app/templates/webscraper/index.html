@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="content">
+    <span class="title">
+        <h1>{% block title %} Web scraper {% endblock %}</h1>
+    </span>
+    <div>
+        <h2>This is the webscraper blueprint</h2>
+    </div>
+
+    <div>
+        <div class="container">
+            <form method="post">
+                <input type="text" placeholder="Voer een geldige url in ..." />
+            </form>
+            <button type="submit">Submit</button>
+        </div>
+        <br>
+        <div class="container">
+            <div>
+                <p> {{ title }} </p>
+            </div>
+        </div>
+        <br>
+        <div class="container">
+            {% for result in results %}
+            <div>
+                <p> {{ result }} </p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
