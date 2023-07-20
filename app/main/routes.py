@@ -8,6 +8,11 @@ def index():
     return render_template("index.html")
 
 
+@bp.route("/contact")
+def contact():
+    return render_template("contact.html")
+
+
 @bp.route("/magic", methods=["GET", "POST"])
 def magic():
     if request.method == "POST":

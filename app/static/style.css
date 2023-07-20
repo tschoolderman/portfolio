@@ -28,10 +28,9 @@ h4 {
     color: rgba(0, 207, 93, 1);
 }
 
-input[type=submit] {
+.btn-danger {
     font-size: 24px;
-    font-style: italic;
-    background-color: crimson;
+    font-weight: bold;
     cursor: pointer;
     padding: 14px 40px;
     border-radius: 12px;
@@ -112,10 +111,11 @@ input[type=submit] {
 /* } */
 
 .parallax-block {
-    height: 100vh;
+    height: 100%;
     padding-top: 30%;
+    padding-bottom: 30%;
 }
 
 #portfolio-card {
-    text-align: left;
+    text-align: justify;
 }
