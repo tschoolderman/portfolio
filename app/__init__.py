@@ -12,6 +12,7 @@ from config import Config
 def create_app(config_class=Config):
     app = Flask(__name__)
     app.config.from_object(config_class)
+    app.secret_key = "development key"
 
     # Initialize Flask extensions here
     db.init_app(app)
