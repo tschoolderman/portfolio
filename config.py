@@ -5,7 +5,7 @@ from sqlalchemy.engine import URL
 class Config:
     settings = Dynaconf(
         environments=True,
-        settings_files=["settings.toml", ".secrets.toml"],
+        settings_files=[".secrets.toml"],
     )
 
     SQLALCHEMY_DATABASE_URI = URL.create(
@@ -18,3 +18,10 @@ class Config:
     )
 
     SQL_ALCHEMY_TRACK_MODIFICATIONS = False
+
+    MAIL_SERVER = settings.MAIL_SERVER
+    MAIL_PORT = settings.MAIL_PORT
+    MAIL_USERNAME = settings.MAIL_USERNAME
+    MAIL_PASSWORD = settings.MAIL_PASSWORD
+    MAIL_USE_TLS = settings.MAIL_USE_TLS
+    MAIL_USE_SSL = settings.MAIL_USE_SSL

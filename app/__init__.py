@@ -1,6 +1,6 @@
 from flask import Flask
 
-from app.extensions import db
+from app.extensions import db, mail
 from app.main import bp as main_bp
 from app.posts import bp as posts_bp
 from app.questions import bp as questions_bp
@@ -12,10 +12,12 @@ from config import Config
 def create_app(config_class=Config):
     app = Flask(__name__)
     app.config.from_object(config_class)
-    app.secret_key = "development key"
+    app.config.from_prefixed_env()
+    print(app.config["MAIL_RECIPIENT"])
 
     # Initialize Flask extensions here
     db.init_app(app)
+    mail.init_app(app)
 
     # Register blueprints here
     app.register_blueprint(main_bp)
