@@ -458,24 +458,62 @@
 <section class="parallax-block" id="contact">
     <div class="row justify-content-center">
         <div class="col-lg-6">
-            <h2>Contact me</h2>
-            <div class="mb-3">
-                <label for="nameInput" class="form-label">Name</label>
-                <input type="text" class="form-control" id="nameInput" placeholder="Name">
-            </div>
-            <div class="mb-3">
-                <label for="emailInput" class="form-label">E-mail</label>
-                <input type="email" class="form-control" id="emailInput" placeholder="Email">
-            </div>
-            <div class="mb-3">
-                <label for="messageInput" class="form-label">Message</label>
-                <textarea class="form-control" id="messageInput" rows="5"></textarea>
-            </div>
-        </div>
-    </div>
-    <div class="row justify-content-center">
-        <div class="col-lg-1">
-            <a class="btn btn-outline-success btn-floating btn-lg" id="sendMail" href="#">Send</a>
+            <h1>Contact me</h1>
+
+            <form action="{{ url_for('main.contact') }}" method="post" novalidate>
+                {{ form.hidden_tag() }}
+                <!-- Name input -->
+                <div class="mb-3">
+                    {{ form.name.label(class="form-label") }}
+                    {{ form.name(class="form-control") }}
+                    {% for message in form.name.errors %}
+                </div>
+                <div class="alert alert-danger">
+                    {{ message }}
+                </div>
+                {% endfor %}
+
+                <!-- Email input -->
+                <div class="mb-3">
+                    {{ form.email.label(class="form-label") }}
+                    {{ form.email(class="form-control") }}
+                </div>
+                {% for message in form.email.errors %}
+                <div class="alert alert-danger">
+                    {{ message }}
+                </div>
+                {% endfor %}
+
+                <!-- Subject input -->
+                <div class="mb-3">
+                    {{ form.subject.label(class="form-label") }}
+                    {{ form.subject(class="form-control", required="true") }}
+                    {% for message in form.subject.errors %}
+                </div>
+                <div class="alert alert-danger">
+                    {{ message }}
+                </div>
+                {% endfor %}
+
+                <!-- Message input -->
+                <div class="mb-3">
+                    {{ form.message.label(class="form-label") }}
+                    {{ form.message(class="form-control", rows="10") }}
+                    {% for message in form.message.errors %}
+                </div>
+                <div class="alert alert-danger">
+                    {{ message }}
+                </div>
+                {% endfor %}
+
+                <!-- Button -->
+                <br>
+                <div class="row justify-content-center">
+                    <div class="col-lg-1">
+                        {{ form.submit(class="btn btn-outline-success btn-lg") }}
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </section>

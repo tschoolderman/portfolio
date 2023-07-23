@@ -8,9 +8,28 @@ from app.main import bp
 from app.main.contactform import ContactForm
 
 
-@bp.route("/")
+@bp.route("/", methods=["GET", "POST"])
 def index():
-    return render_template("index.html")
+    form = ContactForm()
+
+    if request.method == "POST":
+        if form.validate():
+            msg = Message(
+                form.subject.data,
+                sender="contact@example.com",
+                recipients=[environ.get("FLASK_MAIL_RECIPIENT")],
+            )
+            msg.body = """From: %s -- %s\n\n%s""" % (
+                form.name.data,
+                form.email.data,
+                form.message.data,
+            )
+            mail.send(msg)
+            return redirect(url_for("main.contact_succes"))
+        else:
+            return render_template("index.html", form=form)
+    elif request.method == "GET":
+        return render_template("index.html", form=form)
 
 
 @bp.route("/contact/", methods=["GET", "POST"])
