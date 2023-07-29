@@ -15,4 +15,4 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_KEY }}
-          script: echo test workflow command > /home/thomas/test.txt
+          script: ${PWD}/startup.sh
