@@ -1,4 +1,4 @@
-import configobj
+from configobj import ConfigObj
 from flask import Flask
 
 from app.extensions import db, mail
@@ -15,7 +15,7 @@ def create_app(config_class=Config):
     app.config.from_object(config_class)
     app.config.from_prefixed_env()
 
-    config = configobj.ConfigObj(".flaskenv")
+    config = ConfigObj(".flaskenv")
     app.secret_key = config["FLASK_SECRET_KEY"]
 
     # Initialize Flask extensions here
