@@ -1,11 +1,12 @@
-from os import environ
-
+from configobj import ConfigObj
 from flask import redirect, render_template, request, url_for
 from flask_mail import Message
 
 from app.extensions import mail
 from app.main import bp
 from app.main.contactform import ContactForm
+
+config = ConfigObj(".flaskenv")
 
 
 @bp.route("/", methods=["GET", "POST"])
@@ -17,7 +18,7 @@ def index():
             msg = Message(
                 form.subject.data,
                 sender="contact@example.com",
-                recipients=[environ.get("FLASK_MAIL_RECIPIENT")],
+                recipients=[config["FLASK_MAIL_RECIPIENT"]],
             )
             msg.body = """From: %s -- %s\n\n%s""" % (
                 form.name.data,
@@ -41,7 +42,7 @@ def contact():
             msg = Message(
                 form.subject.data,
                 sender="contact@example.com",
-                recipients=[environ.get("FLASK_MAIL_RECIPIENT")],
+                recipients=[config["FLASK_MAIL_RECIPIENT"]],
             )
             msg.body = """From: %s -- %s\n\n%s""" % (
                 form.name.data,
