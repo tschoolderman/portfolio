@@ -1,5 +1,8 @@
+from os import path
+
 from dynaconf import Dynaconf
-from sqlalchemy.engine import URL
+
+basedir = path.abspath(path.dirname(__file__))
 
 
 class Config:
@@ -8,14 +11,7 @@ class Config:
         settings_files=[".secrets.toml"],
     )
 
-    SQLALCHEMY_DATABASE_URI = URL.create(
-        "mysql+pymysql",
-        username=settings.DB_USERNAME,
-        password=settings.DB_PASSWORD,
-        host=settings.DB_HOST,
-        port=settings.DB_PORT,
-        database=settings.DB_NAME,
-    )
+    SQLALCHEMY_DATABASE_URI = "sqlite:///" + path.join(basedir, "portfolio.db")
 
     SQL_ALCHEMY_TRACK_MODIFICATIONS = False
 
