@@ -9,11 +9,11 @@ jobs:
   deploy:
     runs-on: ubuntu-22.04
     steps:
+      - uses: actions/checkout@v3
       - uses: appleboy/ssh-action@v1.0.0
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_KEY }}
+          script: sh ./startup.sh
 
-      - uses: actions/checkout@v3
-      - run: sh ./startup.sh
