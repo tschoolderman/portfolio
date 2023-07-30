@@ -16,5 +16,6 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            sudo bash ./startup.sh
+            bash ./startup.sh
+            sleep 2
             ${{ secrets.PASS }}
