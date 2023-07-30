@@ -15,7 +15,4 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_KEY }}
-          script: |
-            bash ./startup.sh
-            sleep 2
-            ${{ secrets.PASS }}
+          script: bash startup.sh
