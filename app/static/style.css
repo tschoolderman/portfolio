@@ -112,9 +112,9 @@ h4 {
 /* } */
 
 .parallax-block {
-    height: 100vh;
-    padding-top: 30vh;
-    padding-bottom: 30vh;
+    min-height: 100vh;
+    padding-top: 25vh;
+    padding-bottom: 25vh;
 }
 
 #portfolio-card {
