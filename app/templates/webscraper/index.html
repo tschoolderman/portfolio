@@ -1,34 +1,58 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<section class="content">
-    <span class="title">
-        <h1>{% block title %} Web scraper {% endblock %}</h1>
-    </span>
-    <div>
-        <h2>This is a Work In Progress</h2>
-    </div>
-
-    <div>
-        <div class="container">
-            <form method="post">
-                <input type="text" placeholder="Voer een geldige url in ..." />
-            </form>
-            <button type="submit">Submit</button>
-        </div>
-        <br>
-        <div class="container">
+<section class="parallax-block">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <span class="title">
+                <h1>{% block title %} Web scraper {% endblock %}</h1>
+            </span>
             <div>
-                <p> {{ title }} </p>
+                A simple webscraper with the capability of grapping the main title of a webpage. <br>
+                It can also grab elements with the "author"-, "title"- or "h6"-classes. <br>
+                The default webpage is: <a href="https://quotes.toscrape.com" target="_blank">quotes.toscrape.com</a>
+                <br>
+                <br>
+                Try it out yourself! <br>
+                Example: <a href="https://nu.nl" target="_blank">nu.nl</a> gets all titles present on the homepage or
+                <a href="https://dekudeals.com" target="_blank">dekudeals.com</a> to get all the game titles from the
+                landingpage. <br>
+                If you get no result other than the title. There are most likely no matches for the classes, since many
+                pages use different classes.
             </div>
-        </div>
-        <br>
-        <div class="container">
-            {% for result in results %}
+            <br>
             <div>
-                <p> {{ result }} </p>
+                <div class="container">
+                    <form action="{{ url_for('webscraper.index') }}" method="post" novalidate>
+                        <div class="mb-3">
+                            {{ form.url(class="form-control", rows="10", placeholder="Enter an url") }}
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-lg-1">
+                                {{ form.submit(class="btn btn-outline-success btn-lg") }}
+                            </div>
+                    </form>
+                </div>
+                <br>
+                <div class="container">
+                    <div>
+                        <h2>The title from your input:</h2>
+                        <h5>{{ title }}</h5>
+                    </div>
+                </div>
+                <br>
+                <div class="container">
+                    <h2>The results from your input:</h2>
+                    {% if results == [] %}
+                    <p>Sorry no matches...</p>
+                    {% endif %}
+                    {% for result in results %}
+                    <div>
+                        <p> {{ result }} </p>
+                    </div>
+                    {% endfor %}
+                </div>
             </div>
-            {% endfor %}
         </div>
     </div>
 </section>
