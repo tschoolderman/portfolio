@@ -4,7 +4,7 @@ from flask_mail import Message
 
 from app.extensions import mail
 from app.main import bp
-from app.main.contactform import ContactForm
+from app.models.contactform import ContactForm
 
 config = ConfigObj(".flaskenv")
 
