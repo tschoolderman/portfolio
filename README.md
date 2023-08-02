@@ -1,4 +1,4 @@
-![Badge](https://img.shields.io/github/last-commit/tschoolderman/Notes/main) Badge automatic  
+![Badge](https://img.shields.io/github/last-commit/tschoolderman/portfolio/main) Badge automatic  
 
 # Personal portfolio project  
 A collection of ideas and my vision for a preliminary portfolio project.  
