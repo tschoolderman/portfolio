@@ -1,3 +1,5 @@
+![Badge](https://img.shields.io/github/last-commit/tschoolderman/portfolio/main)  
+
 # Personal portfolio project  
 A collection of ideas and my vision for a preliminary portfolio project.  
 It is a work in progress and a learning process for development, deployment and other practices.  
