@@ -133,3 +133,39 @@ h4 {
 .footnote {
     font-size: 8px;
 }
+
+.post-table {
+    max-height: 50vh;
+    overflow-y: auto;
+    position: relative;
+}
+
+.table-header {
+    font-weight: bold;
+    padding: 5px;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    border-bottom: 3px solid rgb(200, 200, 200);
+}
+
+.table-row {
+    padding: 5px;
+    border-bottom: 1px solid rgb(200, 200, 200);
+}
+
+.table-row:nth-child(even) {
+    background-color: rgba(70, 90, 115, 0.2);
+}
+
+.col1 {
+    flex: 1;
+}
+
+.col2 {
+    flex: 1;
+}
+
+.col3 {
+    flex: 5;
+}
