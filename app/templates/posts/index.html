@@ -8,6 +8,9 @@
     </span>
     <div class="content">
         <p>This page is hooked up to a database with simple Create, Read, Update and Delete actions.</p>
+        <p><button class="btn btn-success float-right" data-target="#mymodal" data-toggle="modal" type="button">Add New
+                Post
+            </button></p>
 
         <!-- Header for the table -->
         <div class="container post-table custom-smaller-div">
@@ -27,11 +30,83 @@
                     <div class="col col2"><a href="{{ url_for('posts.single_post', post_id=post.id) }}">
                             {{ post.title }}</a></div>
                     <div class="col col3">{{ post.content }}</div>
+                    <div class="col col4"><a class="btn btn-secondary btn-xs"
+                            data-bs-target="#modaledit{{ url_for('posts.single_post', post_id=post.id) }}"
+                            data-bs-toggle="modal" href="">
+                            Edit</a>
+                        <a class="btn btn-warning btn-xs" href="" onclick="return confirm('Are You Sure To Delete ?')">
+                            Delete</a>
+                    </div>
+                </div>
+                {% endfor %}
+                <!-- Modal Edit -->
+                {% for post in posts %}
+                <div class="modal fade" id="modaledit{{ url_for('posts.single_post', post_id=post.id) }}" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content bg-dark">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Update</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form action="" method="POST">
+                                    <div class="form-group">
+                                        <h4>{{ post.id }}</h4>
+                                        <label>Title:</label>
+                                        <textarea class="form-control" id="titleTextarea">{{ post.title }}</textarea>
+                                    </div>
+                                    <br>
+                                    <div class="form-group">
+                                        <label>Content:</label>
+                                        <textarea class="form-control" name="content" type="text"
+                                            rows="5">{{ post.content }}</textarea>
+                                    </div>
+                                    <br>
+                                    <div class="form-group">
+                                        <button class="btn btn-primary" type="submit">Update</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">Close</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 {% endfor %}
             </div>
         </div>
     </div>
+
+    <!-- Modal Add -->
+    <div class="modal fade" id="mymodal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Add Employee</h4>
+                </div>
+                <div class="modal-body">
+                    <form action="" method="POST">
+                        <div class="form-group">
+                            <label>Name:</label>
+                            <input class="form-control" name="name" required="1" type="text">
+                        </div>
+                        <div class="form-group">
+                            <label>Email:</label>
+                            <input class="form-control" name="email" required="1" type="email">
+                        </div>
+
+                        <div class="form-group">
+                            <button class="btn btn-primary" type="submit">Add Post</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" data-dismiss="modal" type="button">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </section>
 
 {% endblock %}
