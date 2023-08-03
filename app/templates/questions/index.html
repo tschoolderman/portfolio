@@ -1,32 +1,54 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<span class="title">
-    <h1>{% block title %} Questions {% endblock %}</h1>
-</span>
-<div class="questions">
-    <h2>This is a Work In Progress</h2>
-
-    <div class="question">
+<section class="parallax-block">
+    <!-- #region New Question-->
+    <div class="container col-lg-9">
+        <span class="title">
+            <h1>{% block title %} Questions {% endblock %}</h1>
+        </span>
+        <div class="questions">
+            <h5>This is simple database insert for a question and answer table.</h5>
+            <br>
+        </div>
         <div class="new-question">
             <form method="POST">
-                <p>
-                    <textarea id="q-content" name="content" placeholder="Question" cols="30" rows="3"></textarea>
-                </p>
-                <textarea id="q-answer" name="answer" placeholder="Answer" cols="30" rows="3"></textarea>
-                <p><input type="submit"></p>
+                <div class="row justify-content-center">
+                    <div class="col-lg-4">
+                        <textarea class="form-control" id="q-content" name="content" placeholder="Question" cols="30"
+                            rows="3"></textarea>
+                    </div>
+                    <div class="col-lg-4">
+                        <textarea class="form-control" id="q-answer" name="answer" placeholder="Answer" cols="30"
+                            rows="3"></textarea>
+                    </div>
+                </div>
+                <br>
+                <div class="row justify-content-center">
+                    <div class="col-lg-2">
+                        <input type="submit" class="btn btn-outline-success btn-lg">
+                    </div>
+                </div>
             </form>
         </div>
-        <div class="questions-list">
+    </div>
+    <!-- #endregion -->
+    <br>
+    <!-- #region Question Query-->
+    <div class="container">
+        <div class="row">
             {% for question in questions %}
-            <div class="question">
-                <h4>{{ question.content }}</h4>
-                <p>{{ question.answer }}</p>
-                <hr>
+            <div class="col col-sm-6 col-md-3">
+                <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
+                    <div class="card-header">{{ question.content }}</div>
+                    <div class="card-body">
+                        <p class="card-text">{{ question.answer }}</p>
+                    </div>
+                </div>
             </div>
             {% endfor %}
         </div>
     </div>
-
-</div>
+    <!-- #endregion -->
+</section>
 {% endblock %}
