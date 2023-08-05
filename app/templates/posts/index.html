@@ -8,7 +8,9 @@
     </span>
     <div class="content">
         <p>This page is hooked up to a database with simple Create, Read, Update and Delete actions.</p>
-        <p><button class="btn btn-success float-right" data-target="#mymodal" data-toggle="modal" type="button">Add New
+        <p>Click on a title to view the contents single post.</p>
+        <p><button class="btn btn-success float-right" data-bs-target="#newPost" data-bs-toggle="modal"
+                type="button">Add New
                 Post
             </button></p>
 
@@ -20,7 +22,7 @@
                 <div class="col col3">Content</div>
             </div>
 
-            <!-- Body for the table -->
+            <!-- #region Table body-->
             <div class="table-content">
                 {% for post in posts %}
                 <div class="row table-row">
@@ -34,25 +36,28 @@
                             data-bs-target="#modaledit{{ url_for('posts.single_post', post_id=post.id) }}"
                             data-bs-toggle="modal" href="">
                             Edit</a>
-                        <a class="btn btn-warning btn-xs" href="" onclick="return confirm('Are You Sure To Delete ?')">
-                            Delete</a>
+                        <a class="btn btn-warning btn-xs" href="{{ url_for('posts.delete_post', post_id=post.id) }}"
+                            onclick="return confirm('Are You Sure To Delete ?')">Delete</a>
                     </div>
                 </div>
                 {% endfor %}
-                <!-- Modal Edit -->
+                <!-- #endregion -->
+
+                <!-- #region Edit Post-->
                 {% for post in posts %}
                 <div class="modal fade" id="modaledit{{ url_for('posts.single_post', post_id=post.id) }}" role="dialog">
                     <div class="modal-dialog">
                         <div class="modal-content bg-dark">
                             <div class="modal-header">
-                                <h4 class="modal-title">Update</h4>
+                                <h4 class="modal-title">Update a post</h4>
                             </div>
                             <div class="modal-body">
-                                <form action="" method="POST">
+                                <form action="{{ url_for('posts.edit_post', post_id=post.id) }}" method="POST">
                                     <div class="form-group">
                                         <h4>{{ post.id }}</h4>
                                         <label>Title:</label>
-                                        <textarea class="form-control" id="titleTextarea">{{ post.title }}</textarea>
+                                        <input type="text" class="form-control" name="title" id="titleInput"
+                                            value="{{ post.title }}">
                                     </div>
                                     <br>
                                     <div class="form-group">
@@ -73,40 +78,42 @@
                     </div>
                 </div>
                 {% endfor %}
+                <!-- #endregion -->
             </div>
         </div>
     </div>
 
-    <!-- Modal Add -->
-    <div class="modal fade" id="mymodal" role="dialog">
+    <!-- #region Modal Add New-->
+    <div class="modal fade" id="newPost" role="dialog">
         <div class="modal-dialog">
-            <div class="modal-content">
+            <div class="modal-content bg-dark">
                 <div class="modal-header">
-                    <h4 class="modal-title">Add Employee</h4>
+                    <h4 class="modal-title">Add a new post</h4>
                 </div>
                 <div class="modal-body">
-                    <form action="" method="POST">
+                    <form action="{{ url_for('posts.new_post') }}" method="POST">
                         <div class="form-group">
-                            <label>Name:</label>
-                            <input class="form-control" name="name" required="1" type="text">
+                            <label>Title:</label>
+                            <input class="form-control" name="title" required="1" type="text">
                         </div>
+                        <br>
                         <div class="form-group">
-                            <label>Email:</label>
-                            <input class="form-control" name="email" required="1" type="email">
+                            <label>Content:</label>
+                            <textarea class="form-control" name="content" required="1" type="text" rows="5"></textarea>
                         </div>
-
+                        <br>
                         <div class="form-group">
                             <button class="btn btn-primary" type="submit">Add Post</button>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" data-dismiss="modal" type="button">Close</button>
+                    <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">Close</button>
                 </div>
             </div>
         </div>
     </div>
-
+    <!-- #endregion -->
 </section>
 
 {% endblock %}
