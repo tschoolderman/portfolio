@@ -1,4 +1,5 @@
 __pycache__/
+portfolio.db
 
 # Ignore dynaconf secret files
 .secrets.*
