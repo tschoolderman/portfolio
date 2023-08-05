@@ -1,4 +1,4 @@
-![Badge](https://img.shields.io/github/last-commit/tschoolderman/portfolio/main)  
+![Badge](https://img.shields.io/github/last-commit/tschoolderman/portfolio/main) ![Badge](https://github.com/tschoolderman/portfolio/actions/workflows/deploy.yml/badge.svg)  
 
 # Personal portfolio project  
 A collection of ideas and my vision for a preliminary portfolio project.  
