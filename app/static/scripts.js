@@ -24,3 +24,14 @@ function backToTop() {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
 }
+
+$(document).ready(function () {
+    $(window).on('scroll', function () {
+        var windowHeight = $(window).height();
+        var documentHeight = $(document).height();
+        var scrollTop = $(window).scrollTop();
+        var scrollPercent = (scrollTop / (documentHeight - windowHeight)) * 100;
+
+        $('#scroll-progress').css('width', scrollPercent + '%');
+    });
+});
