@@ -5,7 +5,7 @@ from app.models.question import Question
 from app.questions import bp
 
 
-@bp.route("/", methods=("GET", "POST"))
+@bp.route("/", methods=["GET", "POST"])
 def index():
     questions = Question.query.all()
 

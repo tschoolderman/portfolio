@@ -1,8 +1,6 @@
 body {
     height: 100vh;
     background: rgba(17, 26, 40, 1);
-    /* background-repeat: no-repeat;
-    background-size: cover; */
     color: rgb(200, 200, 200);
     font-size: 18px;
     font-family: Roboto, sans-serif;
@@ -92,14 +90,17 @@ h4 {
     height: 10vh;
 }
 
-.form-control-dark {
-    border-color: var(--bs-gray);
+.form-control {
+    background-color: rgba(255, 255, 255, .9);
+    border-width: 3px;
 }
 
-.form-control-dark:focus {
-    border-color: #fff;
-    box-shadow: 0 0 0 .25rem rgba(255, 255, 255, .25);
+.form-control:focus {
+    background-color: rgba(255, 255, 255, .9);
+    border-color: rgba(0, 207, 93, 1);
+    border-width: 3px;
 }
+
 
 /* .parallax { */
 /* background: linear-gradient(rgba(0, 0, 0, 0.5),
@@ -123,7 +124,6 @@ h4 {
 
 @media (max-width: 576px) {
 
-    /* For phones (up to 576px) */
     .custom-smaller-div {
         width: 100%;
         font-size: 12px;
@@ -168,4 +168,12 @@ h4 {
 
 .col3 {
     flex: 5;
+}
+
+.col4 {
+    flex: 1;
+}
+
+.modal {
+    top: 15vh;
 }
